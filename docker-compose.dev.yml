@@ -1,0 +1,15 @@
+services:
+  hytale-server:
+    build: ./build
+    container_name: hytale-server-dev
+    ports:
+      - "5520:5520/udp"
+    volumes:
+      - ./data:/app
+    restart: unless-stopped
+    environment:
+      - MIN_RAM=2g # default: 2g
+      - MAX_RAM=4g # default: 4g
+      - GARBAGE_COLLECTOR_TYPE=G1GC # default: G1GC
+      - ENABLE_AOT_CACHE=true # default: true
+      # - EXTRA_JVM_OPTS= # Optional
