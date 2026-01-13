@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Detect architecture and run with emulation if ARM64
+ARCH=$(uname -m)
+
 SERVER_INSTALLER_URL="https://downloader.hytale.com/hytale-downloader.zip"
 SERVER_INSTALLER_ZIP="hytale-downloader.zip"
 SERVER_INSTALLER="hytale-downloader-linux-amd64"
@@ -24,7 +27,11 @@ if [ ! -f "$SERVER_EXECUTABLE" ]; then
         fi
         echo "Running downloader..."
         chmod +x "$SERVER_INSTALLER"
-        ./"$SERVER_INSTALLER"
+        if [ "$ARCH" = "aarch64" ]; then
+            qemu-x86_64-static ./"$SERVER_INSTALLER"
+        else
+            ./"$SERVER_INSTALLER"
+        fi
         rm "$SERVER_INSTALLER"
         echo "Downloader finished."
     fi
