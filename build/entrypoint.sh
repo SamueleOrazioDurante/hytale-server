@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SERVER_INSTALLER_URL="https://downloader.hytale.com/hytale-downloader-linux-amd64"
+SERVER_INSTALLER_URL="https://downloader.hytale.com/hytale-downloader.zip"
 SERVER_INSTALLER_ZIP="hytale-downloader.zip"
 SERVER_INSTALLER="hytale-downloader-linux-amd64"
 SERVER_ZIP="2026.01.13-dcad8778f.zip"
