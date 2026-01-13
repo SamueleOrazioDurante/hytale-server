@@ -39,6 +39,24 @@ On the first server startup, the container will download the game files. During 
 
 After completing the authorization, the container will continue downloading the game files and automatically start the server.
 
+## Hytale Server Error: “Server session token not available – cannot request auth grant”
+
+If you need to authenticate the server after it has already started, you can run a temporary server instance for authentication using the following command:
+
+```
+docker-compose exec hytale-server java -jar /app/Server/HytaleServer.jar ----assets /app/Assets.zip
+```
+
+Follow these steps:
+
+1. Start the server.
+2. Run `/auth login device`.
+3. Authorize in the browser.
+4. Run `/auth persistence Encrypted`.
+5. Restart safely.
+
+To close the temporary server, press CTRL + C, then run `docker-compose up -d` to restart the server.
+
 ## Environment Variables
 
 The following environment variables can be configured in the `docker-compose.yml` file to customize the server's behavior:

@@ -7,7 +7,7 @@ SERVER_INSTALLER_URL="https://downloader.hytale.com/hytale-downloader.zip"
 SERVER_INSTALLER_ZIP="hytale-downloader.zip"
 SERVER_INSTALLER="hytale-downloader-linux-amd64"
 SERVER_ZIP="2026.01.13-dcad8778f.zip"
-SERVER_EXECUTABLE="Server/HytaleServer.jar"
+SERVER_EXECUTABLE="HytaleServer.jar"
 ASSETS_ZIP="Assets.zip"
 
 # Generate JAVA_OPTS from environment variables
@@ -19,7 +19,7 @@ if [ -n "${EXTRA_JVM_OPTS}" ]; then
     JAVA_OPTS="$JAVA_OPTS $EXTRA_JVM_OPTS"
 fi
 
-if [ ! -f "$SERVER_EXECUTABLE" ]; then
+if [ ! -f "Server/$SERVER_EXECUTABLE" ]; then
     if [ ! -f "$SERVER_ZIP" ] || [ ! -f "$ASSETS_ZIP" ]; then
         if [ ! -f "$SERVER_INSTALLER" ]; then
             echo "Downloading server files..."
@@ -38,4 +38,5 @@ if [ ! -f "$SERVER_EXECUTABLE" ]; then
     unzip "$SERVER_ZIP"
     rm "$SERVER_ZIP"
 fi
-exec java $JAVA_OPTS -jar $SERVER_EXECUTABLE --assets $ASSETS_ZIP
+cd ./Server
+exec java $JAVA_OPTS -jar $SERVER_EXECUTABLE --assets ../$ASSETS_ZIP
