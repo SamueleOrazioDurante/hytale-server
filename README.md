@@ -1,3 +1,6 @@
+> [!WARNING]  
+> This does not work since hytale updated .zip name file when downloading server files. You will need to unzip the file manually and restart the server and it will continue working. I will not update this repo since I know made a custom pterodactyl full dockerized server for hosting this type of game server through ptero eggs.
+
 # Hytale Server in Docker
 
 This repository contains a Docker configuration to run a Hytale server. It uses Docker Compose to manage the server container.
